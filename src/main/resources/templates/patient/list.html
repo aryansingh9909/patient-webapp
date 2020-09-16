@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Web Application for Patient </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+    table {
+        border-collapse: collapse;
+        width: 600px;
+        height: 100px;
+    }
+    table, th, td {
+        border: 1px solid black;
+        
+    }
+    th {
+        text-align: left;
+    }
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="/css/patientform.css"/>
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(patients)}">
+        <h2 style="text-align:center">Patient List</h2>
+        <table class="tabl" border="1" align="center">
+            <tr>
+                <th style="text-align:center">Id</th>
+                <th style="text-align:center">Name</th>
+                <th style="text-align:center">Age</th>
+                <th style="text-align:center">Gender</th>
+               
+            </tr>
+            <tr th:each="patient : ${patients}">
+                <td th:text="${patient.id.toHexString()}"></td>
+                <td th:text="${patient.Name}"></td>
+                <td th:text="${patient.Age}"></td>
+                <td th:text="${patient.Gender}"></td>
+                
+            </tr>
+        </table>
+    </div>
+    <div class="links">
+        <div class="col-sm-3">
+            <a href="/patient/new">New Patient</a>
+        </div>
+        <div class="col-sm-3">
+            <a href="/patient/search">Search Patient</a>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
