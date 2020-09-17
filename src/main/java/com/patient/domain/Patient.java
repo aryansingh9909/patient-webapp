@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 public class Patient {
     @Id
     private ObjectId _id;
+    private String alphaid;
     private String name;
     private BigDecimal age;
     private String gender;
@@ -50,5 +51,13 @@ public class Patient {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getAlphaid() {
+        return alphaid;
+    }
+
+    public void setAlphaid(String alphaid) {
+        this.alphaid = alphaid;
     }
 }

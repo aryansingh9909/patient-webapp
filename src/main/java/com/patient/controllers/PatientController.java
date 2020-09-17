@@ -3,7 +3,7 @@ package com.patient.controllers;
 import com.patient.commands.PatientForm;
 //import guru.springframework.converters.PatientToPatientForm;
 import com.patient.domain.Patient;
-import com.patient.repositories.PatientRepository;
+//import com.patient.repositories.PatientRepository;
 import com.patient.services.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -116,9 +116,7 @@ public class PatientController {
         if(bindingResult.hasErrors()){
             return "patient/patientform";
         }
-
         Patient savedPatient = patientService.saveOrUpdatePatientForm(patientForm);
-
         return "redirect:/patient/show/" + savedPatient.getId();
     }
 /*

@@ -4,6 +4,8 @@ import com.patient.commands.PatientForm;
 import com.patient.converters.PatientFormToPatient;
 import com.patient.domain.Patient;
 import com.patient.repositories.PatientRepository;
+
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,8 +38,11 @@ public class PatientServiceImpl implements PatientService {
         return patientRepository.findById(id).orElse(null);
     }
 
+
+
     @Override
     public Patient saveOrUpdate(Patient patient) {
+        patient.setAlphaid(RandomStringUtils.randomAlphanumeric(16));
         patientRepository.save(patient);
         return patient;
     }
@@ -50,7 +55,6 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public Patient saveOrUpdatePatientForm(PatientForm patientForm) {
         Patient savedPatient = saveOrUpdate(patientFormToPatient.convert(patientForm));
-
         System.out.println("Saved Patient Id: " + savedPatient.getId());
         return savedPatient;
     }

@@ -8,6 +8,7 @@ import java.math.BigDecimal;
  */
 public class PatientForm {
     private String id;
+    private String alphaid;
     private String Name;
     private BigDecimal Age;
     private String Gender;
@@ -42,5 +43,13 @@ public class PatientForm {
 
     public void setGender(String Gender) {
         this.Gender = Gender;
+    }
+
+    public String getAlphaid() {
+        return alphaid;
+    }
+
+    public void setAlphaid(String alphaid) {
+        this.alphaid = alphaid;
     }
 }
