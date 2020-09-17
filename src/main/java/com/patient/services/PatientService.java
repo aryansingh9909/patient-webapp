@@ -15,9 +15,12 @@ public interface PatientService {
 
     Patient saveOrUpdate(Patient patient);
 
-    List<Patient> getByName(String Name);
+    List<Patient> getByFnameAndLname(String fname, String lname);
+    //List<Patient> getByName(String Name);
 
     void delete(String id);
+    
+    void deleteAll();
 
     Patient saveOrUpdatePatientForm(PatientForm patientForm);
 }

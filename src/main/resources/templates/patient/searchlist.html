@@ -26,17 +26,20 @@
         <h2 style="text-align:center">Search List</h2>
         <table class="tabl" border="1" align="center">
             <tr>
-                <th style="text-align:center">Id</th>
-                <th style="text-align:center">Name</th>
+                <th style="text-align:center">Patient Id</th>
+                <th style="text-align:center">First Name</th>
+                <th style="text-align:center">Last Name</th>
                 <th style="text-align:center">Age</th>
                 <th style="text-align:center">Gender</th>
                
             </tr>
             <tr th:each="patient : ${patients}">
-                <td th:text="${patient.id.toHexString()}"></td>
-                <td th:text="${patient.Name}"></td>
-                <td th:text="${patient.Age}"></td>
-                <td th:text="${patient.Gender}"></td>
+                <!--<td th:text="${patient.id.toHexString()}"></td>-->
+                <td th:text="${patient.alphaid}"></td>
+                <td th:text="${patient.fname}"></td>
+                <td th:text="${patient.lname}"></td>
+                <td th:text="${patient.age}"></td>
+                <td th:text="${patient.gender}"></td>
                 
             </tr>
         </table>

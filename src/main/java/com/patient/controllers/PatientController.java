@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,10 +62,16 @@ public class PatientController {
 
     @RequestMapping("/patient/show/{id}")
     public String getPatient(@PathVariable String id, Model model) {
-        model.addAttribute("patient", patientService.getById(id));
+        Patient p = patientService.getById(id);
+        //model.addAttribute("age",Period.between(patientService.getById(id).getDob(), LocalDate.now()).getYears());
+        model.addAttribute("patient", p);
+        //Patient xyz = patientService.getById(id);
+        //System.out.println(Period.between(patientService.getById(id).getDob(), LocalDate.now()).getYears());
         return "patient/show";
     }
 
+
+    
     /*
      * @RequestMapping("patient/edit/{id}") public String edit(@PathVariable String
      * id, Model model){ Patient patient = patientService.getById(id); PatientForm
@@ -77,6 +85,7 @@ public class PatientController {
     public String newPatient(Model model) {
         System.out.println("1");
         model.addAttribute("patientForm", new PatientForm());
+        
         return "patient/patientform";
     }
 
@@ -89,23 +98,23 @@ public class PatientController {
     @RequestMapping(value = "/patient/search")
     public String searchName() {
         System.out.println("Hi search");
-        // Patient savedPatient = patientService.saveOrUpdatePatientForm(patientForm);
-
-        // model.addAttribute("patients", patientService.getByName(name));
-
-        /*
-         * List<Patient> searched = new ArrayList<>(); searched =
-         * patientService.getByName(name); System.out.println(searched);
-         */
 
         return "/patient/search";
 
     }
 
-    @GetMapping(value = "/Search")
+    /*@GetMapping(value = "/Search")
     public String search(@RequestParam(value = "Name") String name, Model model) {
         System.out.println(name);
         model.addAttribute("patients", patientService.getByName(name));
+        System.out.println("8");
+        return "/patient/searchlist";
+    }*/
+
+    @GetMapping(value = "/Search")
+    public String search(@RequestParam(value = "Name") String name, Model model) {
+        System.out.println(name);
+        model.addAttribute("patients", patientService.getByFnameAndLname(name, name));
         System.out.println("8");
         return "/patient/searchlist";
     }

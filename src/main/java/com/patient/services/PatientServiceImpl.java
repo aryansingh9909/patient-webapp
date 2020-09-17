@@ -8,10 +8,8 @@ import com.patient.repositories.PatientRepository;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -38,8 +36,6 @@ public class PatientServiceImpl implements PatientService {
         return patientRepository.findById(id).orElse(null);
     }
 
-
-
     @Override
     public Patient saveOrUpdate(Patient patient) {
         patient.setAlphaid(RandomStringUtils.randomAlphanumeric(16));
@@ -60,11 +56,23 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
+    public List<Patient> getByFnameAndLname(String fname, String lname) {
+        List<Patient> patients = new ArrayList<>();
+        patientRepository.getByFnameAndLname(fname, lname).forEach(patients::add);
+        return patients;
+
+    }
+
+    @Override
+    public void deleteAll() {
+    }
+
+    /*@Override
     public List<Patient> getByName(String Name) {
         List<Patient> patients = new ArrayList<>();
         patientRepository.getByName(Name).forEach(patients::add); 
         return patients;
-    }
+    }*/
 
       
 }

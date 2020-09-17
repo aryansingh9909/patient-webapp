@@ -22,8 +22,10 @@ public class PatientFormToPatient implements Converter<PatientForm, Patient> {
         if (patientForm.getId() != null  && !StringUtils.isEmpty(patientForm.getId())) {
             patient.setId(new ObjectId(patientForm.getId()));
         }
-        patient.setName(patientForm.getName());
-        patient.setAge(patientForm.getAge());
+        patient.setFname(patientForm.getFname());
+        patient.setLname(patientForm.getLname());
+        //patient.setAge(patientForm.getAge());
+        patient.setDob(patientForm.getDob());
         patient.setGender(patientForm.getGender());
         return patient;
     }

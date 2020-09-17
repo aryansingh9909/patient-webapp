@@ -15,6 +15,7 @@
           th:href="@{css/spring-core.css}" rel="stylesheet" media="screen"/>
 </head>
 <body>
+
 <div class="container">
     <div th:if="${not #lists.isEmpty(patients)}">
         <h2>Patient List</h2>
@@ -22,17 +23,18 @@
             <tr>
                 <th>Id</th>
                 <!--<th>Patient ID</th>-->
-                <th>Name</th>
-                <th>Age</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <!--<th>Age</th>-->
                 <th>Gender</th>
-
                
             </tr>
             <tr th:each="patient : ${patients}">
                 <!--<td th:text="${patient.id.toHexString()}"></td>-->
                 <td th:text="${patient.alphaid}"></td>
-                <td th:text="${patient.name}"></td>
-                <td th:text="${patient.age}"></td>
+                <td th:text="${patient.fname}"></td>
+                <td th:text="${patient.lname}"></td>
+                <!--<td th:text="${patient.age}"></td>-->
                 <td th:text="${patient.gender}"></td>
                 
             </tr>
@@ -47,7 +49,7 @@
         </div>
     </div>
 </div>
-
+                    
 </body>
 
 </html>
