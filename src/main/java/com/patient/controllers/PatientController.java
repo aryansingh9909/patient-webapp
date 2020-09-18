@@ -21,13 +21,12 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 //import javax.validation.Valid;
 
 import com.fasterxml.jackson.core.sym.Name;
 
-/**
- * Created by jt on 1/10/17.
- */
 @Controller
 public class PatientController {
     private PatientService patientService;
@@ -120,7 +119,7 @@ public class PatientController {
     }
 
     @RequestMapping(value = "/patient", method = RequestMethod.POST)
-    public String saveOrUpdatePatient(@Validated PatientForm patientForm, BindingResult bindingResult) {
+    public String saveOrUpdatePatient(@Valid PatientForm patientForm, BindingResult bindingResult) {
         System.out.println("5");
         if(bindingResult.hasErrors()){
             return "patient/patientform";
