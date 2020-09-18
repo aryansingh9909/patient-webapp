@@ -39,7 +39,7 @@
             <div class="form-group" th:class="${#fields.hasErrors('fname')} ? 'form-group has-error' : 'form-group'">
                 <label class="col-sm-2 control-label">First Name:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{fname}" th:errorclass="has-error"/>
+                    <input type="text" class="form-control" th:field="*{fname}" th:errorclass="has-error" pattern = "[A-Za-z0-9]{0,10}" title="You can enter these field values [A-Za-z0-9]" required/>
 
                     <span class="help-block">
                        <ul>
@@ -52,7 +52,7 @@
              <div class="form-group" th:class="${#fields.hasErrors('lname')} ? 'form-group has-error' : 'form-group'">
                 <label class="col-sm-2 control-label">Last Name:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" th:field="*{lname}" th:errorclass="has-error"/>
+                    <input type="text" class="form-control" th:field="*{lname}" th:errorclass="has-error" pattern = "[A-Za-z0-9]{0,10}" title="You can enter these field values [A-Za-z0-9]" required/>
 
                     <span class="help-block">
                        <ul>
@@ -80,7 +80,7 @@
                 <label class="col-sm-2 control-label">Date of Birth:</label>
                 <div class="col-sm-10">
                     
-                    <input type="date" class="form-control" th:field="*{dob}" th:errorclass="has-error"/>
+                    <input type="date" class="form-control" th:field="*{dob}" th:errorclass="has-error" max = '2020-09-18'/>
                     <span class="help-block">
                        <ul>
                            <li th:each="err : ${#fields.errors('dob')}" th:text="${err}" />
